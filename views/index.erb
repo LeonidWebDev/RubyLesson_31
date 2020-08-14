@@ -2,14 +2,23 @@
 <div class="row">
     <% @products.each do |p| %>
         <div class="col-md-3">
-            <div">
+            <div>
                 <%= p.title %>
             </div>
-            <div">
+            <div>
                 <img src="<%= p.path_to_image %>" />
             </div>
-            <div">
+            <div>
                 <%= p.description %>
+            </div>
+            <div>
+                <%= p.price %>
+            </div>
+            <div>
+                <%= p.size %>
+            </div>
+            <div>
+                <button class="btn btn-sm btn-success" onclick="add_to_cart()">Add to cart</button>
             </div>
         </div>
     <% end %>
