@@ -13,6 +13,6 @@ function something() {
     alert(item1)
 }
 
-function add_to_cart() {
-    alert("add_to_cart")
+function add_to_cart(id) {
+    alert("add_to_cart: " + id)
 }
