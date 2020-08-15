@@ -14,15 +14,20 @@ function something() {
 }
 
 function add_to_cart(id) {
+
     let key = 'product_' + id
     let x = window.localStorage.getItem(key)
     x = x * 1 + 1
 
     window.localStorage.setItem(key, x)
+
+    update_orders_input()
 }
 
 function cart_get_number_of_iems() {
+
     let cnt = 0
+
     for (let i = 0; i < window.localStorage.length; i++) {
         let key = window.localStorage.key(i) // получаем ключ
         let val = window.localStorage.getItem(key) // получаем значение
@@ -31,13 +36,23 @@ function cart_get_number_of_iems() {
             cnt = cnt + value * 1
         }
     }
+
     return cnt
 
 }
 
+function update_orders_input() {
+
+    let orders = cart_get_orders() // get string from cart
+    $('#orders_input').val(orders)
+}
+
+update_orders_input()
 
 function cart_get_orders() {
+
     let orders = ''
+
     for (let i = 0; i < window.localStorage.length; i++) {
         let key = window.localStorage.key(i) // получаем ключ
         let val = window.localStorage.getItem(key) // получаем значение
@@ -46,6 +61,7 @@ function cart_get_orders() {
             orders = orders + key + '=' + value + ','
         }
     }
+
     return orders
 
 }
