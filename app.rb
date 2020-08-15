@@ -20,7 +20,7 @@ end
 post '/cart' do
   orders_input = params[:orders] # get data about cart
   @orders = parse_orders_line orders_input
-  erb "#{orders}"
+  erb :cart
 end
 
 def parse_orders_line orders_input
