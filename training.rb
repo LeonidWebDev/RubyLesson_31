@@ -10,7 +10,13 @@ loop do
     x = x + n       # increase by n    
     hh[id] = x      # set hash value
 
+    total = 0
+    hh.each do |key, value|
+        puts total = total + value
+    end
 
+    # puts total variable
+    puts 'Total items in cart: #{total}'
     puts hh.inspect
     puts '================'
 
