@@ -26,7 +26,7 @@ post "/place_order" do
 end
 
 post '/cart' do
-  @orders_input = params[:orders] # get data about cart
+  @orders_input = params[:orders_input] # get data about cart
   @items = parse_orders_line @orders_input
 
   @items.each do |item|
