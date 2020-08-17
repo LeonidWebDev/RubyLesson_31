@@ -8,6 +8,9 @@ set :database, "sqlite3:pizzashop.db"
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+end
+
 get '/' do
   @product = Product.all 
   erb :index
@@ -18,8 +21,8 @@ get '/about' do
 end
 
 post '/cart' do
-  orders_input = params[:orders] # get data about cart
-  @items = parse_orders_line orders_input
+  @orders_input = params[:orders] # get data about cart
+  @items = parse_orders_line @orders_input
 
   @items.each do |item|
     item[0] = Product.find(item[0])
@@ -36,7 +39,7 @@ def parse_orders_line orders_input
   s1.each do |x|
     s2 = x.split(/\=/)
 
-    s3 = s2.[0].split(/_/)
+    s3 = s2[0].split(/_/)
 
     id = s3[1]
     cnt = s2[1]
